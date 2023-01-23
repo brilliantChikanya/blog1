@@ -1,0 +1,55 @@
+<!-- This was the original home page template -->
+
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/variables.css' %}">
+
+
+
+{% block content %}
+<style>
+    .home-container{
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+      }
+</style>
+
+
+<div class="home-container">
+
+
+    <div>
+        
+      {% include 'blog/categories_component.html' %}
+            
+    </div>
+
+
+    <div>
+
+      <h3>Posts</h3>
+
+        <a href="{% url 'create_post' %}">Create Post</a>
+        
+      {% include 'blog/posts_component.html' %}
+
+      {% include 'blog/pagination.html' with page=page_obj %}
+      <!-- The pagination functionality is not yet working fully.  TODO -->
+        
+    </div>
+
+
+    <div>
+        
+      {% include 'blog/popular_posts_component.html' %}
+
+    </div>
+
+</div>
+
+    
+{% endblock %}
+    

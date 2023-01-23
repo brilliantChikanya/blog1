@@ -1,0 +1,51 @@
+<!-- This template is a reusable template for categories of posts. We can use it in a view 
+     for an author of an article, for example. -->
+<div class="topics">
+    <div class="topics__header">
+        <h2>Browse Categories</h2>
+    </div>
+    <ul class="topics__list">
+        <li>
+    <!--This will take a user to the home page showing all categories of posts -->
+            <a href="{% url 'home' %}" class="active">All <span>{{categorys.count}}</span></a>
+        </li>
+        {% for category in categorys %}
+        <li>
+
+        <!--The search functionality will take a user to the home page and a user will pass 
+            in a search parameter, which is the q variable in the link -->
+
+        <!-- We want to show all categories of posts, but later when they increase
+             in number, we might want to show only those with the most posts [TO DO]-->
+            <a href="{% url 'home' %}?q={{category.name}}">{{category.name}}<span>{{category.post_set.all.count}}</span></a>
+        </li>
+        {% endfor %}
+
+    </ul>
+    <a class="btn btn--link" href="{% url 'categories' %}">
+        More
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+            <title>chevron-down</title>
+            <path d="M16 21l-13-13h-3l16 16 16-16h-3l-13 13z"></path>
+        </svg>
+    </a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

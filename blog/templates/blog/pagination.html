@@ -1,0 +1,56 @@
+<!-- This template is for paginating any view that needs to be split into several pages -->
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+
+            <a href="?page=1">&laquo First</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+
+        {% endif %}
+
+    <span class="current">
+
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+
+    </span>
+
+        {% if page_obj.has_next %}
+
+        <a href="?page={{ page_obj.next_page_number }}">Next</a>
+
+        <a href="?page={{page_obj.paginator.num_pages}}">Last &raquo</a>
+
+        {% endif %}
+    </span>
+
+</div>
+
+
+
+<!-- This is what is needed for any pagination functionality:
+            1. To get the request object, which is a page_obj
+            2. To determine if the page_object has a previous page or object
+            3. To determine if the page_object has a next page or object
+            4. To determine the current page
+            5. To determine the total number of pages
+
+            These are defined below:
+
+-->
+
+<!--
+
+      {{page_obj}} <br>
+
+      Has Previous: {{page_obj.has_previous}} <br>
+
+      Has Next: {{page_obj.has_next}} <br>
+
+      Current Page: {{page_obj.number}} <br>
+
+      Number of Pages: {{page_obj.paginator.num_pages}}
+        
+
+-->

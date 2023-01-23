@@ -1,0 +1,55 @@
+<!-- This template is for the profile of an author in this blog 
+     hence, a user is served this template when they click on the 
+     author's profile link -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="profile-page layout layout--3">
+  <div class="container">
+    <!-- Categories Start -->
+    {% include 'blog/categories_component.html' %}
+    <!-- Categories End -->
+
+    <!-- Topics List Start -->
+    <div class="roomList">
+      <div class="profile">
+        <div class="profile__avatar">
+          <div class="avatar avatar--large active">
+            <img src="{{user.avatar.url}}" />
+          </div>
+        </div>
+        <div class="profile__info">
+          <h3>{{user.name}}</h3>
+          <p>@{{user.username}}</p>
+          {% if request.user == user %}
+          <a href="{% url 'edit_profile' %}" class="btn btn--main btn--pill">Edit Profile</a>
+          {% endif %}
+        </div>
+        <div class="profile__about">
+          <h3>About</h3>
+          <p>
+            {{user.profile.bio}}
+          </p>
+        </div>
+      </div>
+
+      <div class="roomList__header">
+        <div>
+          <h2>Posts created by {{user.username}}</a>
+          </h2>
+        </div>
+      </div>
+      
+      {% include 'blog/posts_component.html' %}
+      
+
+    </div>
+    <!-- Post List End -->
+
+    <!-- Activities Start -->
+    {% include 'blog/popular_posts_component.html' %}
+    <!-- Activities End -->
+  </div>
+</main>
+{% endblock content %}

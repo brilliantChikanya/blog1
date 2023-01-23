@@ -1,0 +1,24 @@
+<!-- This is a form that will be used by users to send emails to my email account
+    This is stil a work in progress  # TODO -->
+
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+
+<div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p}}
+
+        <input type="submit" value="Submit">
+
+    </form>
+</div>
+
+
+    
+{% endblock content %}
+    
